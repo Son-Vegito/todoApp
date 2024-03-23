@@ -1,10 +1,13 @@
-import { useState } from "react";
 
 
-export function ToDos(){
-    return <div>
-        <h2>Go to GYM</h2>
-        <h4>GYM from 7-9</h4>
-        <button>mark as done!</button>
+export function ToDos({todos}){
+    return <div> 
+        {todos.map((todo)=>{
+            return <div>
+                <h2>{todo.title}</h2>
+                <h4>{todo.description}</h4>
+                <button>{(todo.completed==true)?"Completed":"Mark as Completed!"}</button>
+            </div>
+        })}
     </div>
 }

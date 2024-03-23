@@ -2,8 +2,10 @@ const express=require('express');
 const { createTodo, updateTodo } = require('./types');
 const { todo } = require('./db');
 const app=express();
+const cors= require('cors');
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/todo',async (req,res)=>{
     const payload=req.body;
@@ -14,7 +16,7 @@ app.post('/todo',async (req,res)=>{
     await todo.create({
         title:payload.title,
         description:payload.description
-    })
+    })  
     res.send("Todo created");
 })
 
